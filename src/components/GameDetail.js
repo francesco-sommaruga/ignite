@@ -7,36 +7,42 @@ import { useSelector } from 'react-redux';
 
 const GameDetail = () => {
     //get data
-    const { game, screenshots } = useSelector(state => state.gameDetails);
+    const { game, screenshots, isLoading } = useSelector(state => state.gameDetails);
 
     return (
         <CardShadow>
             <Details>
-                <Stats>
-                    <div className="rating">
-                        <h3>{game.name}</h3>
-                        <p>Rating: {game.rating}</p>
-                    </div>
-                    <Info>
-                        <h3>Platforms</h3>
-                        <Platforms>
-                            {game.platforms.map(data => (
-                                <h3 key={data.platform.id}>{data.platform.name}</h3>
+                {isLoading ? (
+                    <h3>Loading...</h3>
+                ) : (
+                    <>
+                        <Stats>
+                            <div className="rating">
+                                <h3>{game.name}</h3>
+                                <p>Rating: {game.rating}</p>
+                            </div>
+                            <Info>
+                                <h3>Platforms</h3>
+                                <Platforms>
+                                    {game.platforms.map(data => (
+                                        <h3 key={data.platform.id}>{data.platform.name}</h3>
+                                    ))}
+                                </Platforms>
+                            </Info>
+                        </Stats>
+                        <Media>
+                            <img src={game.background_image} alt={game.name} />
+                        </Media>
+                        <Description>
+                            <p>{game.description_raw}</p>
+                        </Description>
+                        <div className="gallery">
+                            {screenshots.results.map(screenshot => (
+                                <img src={screenshot.image} key={screenshot.id} alt="game screenshot" />
                             ))}
-                        </Platforms>
-                    </Info>
-                </Stats>
-                <Media>
-                    <img src={game.background_image} alt={game.name} />
-                </Media>
-                <Description>
-                    <p>{game.description_raw}</p>
-                </Description>
-                <div className="gallery">
-                    {screenshots.results.map(screenshot => (
-                        <img src={screenshot.image} key={screenshot.id} alt="game screenshot" />
-                    ))}
-                </div>
+                        </div>
+                    </>
+                )}
             </Details>
         </CardShadow>
     );
@@ -67,6 +73,7 @@ const CardShadow = styled(motion.div)`
 
 const Details = styled(motion.div)`
     width: 80%;
+    min-height: 80%;
     margin: 5rem 0;
     border-radius: 1rem;
     padding: 2% 5%;
@@ -74,8 +81,8 @@ const Details = styled(motion.div)`
     position: absolute;
     left: 10%;
     color: black;
-    h3{
-        padding: 1.5rem 0 .5rem 0;
+    h3 {
+        padding: 1.5rem 0 0.5rem 0;
     }
     img {
         width: 100%;

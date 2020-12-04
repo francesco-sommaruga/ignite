@@ -6,6 +6,9 @@ import { loadDetail } from '../actions/gameDetailActions';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+//link for react router
+import { Link } from 'react-router-dom';
+
 const Game = ({ game }) => {
     //load details
     const dispatch = useDispatch();
@@ -14,9 +17,11 @@ const Game = ({ game }) => {
     };
     return (
         <StyledGame onClick={loadDetailHandler}>
-            <h3>{game.name}</h3>
-            <p>{game.released}</p>
-            <img src={game.background_image} alt={game.name} />
+            <Link to={`/game/${game.id}`}>
+                <h3>{game.name}</h3>
+                <p>{game.released}</p>
+                <img src={game.background_image} alt={game.name} />
+            </Link>
         </StyledGame>
     );
 };
@@ -38,7 +43,7 @@ const StyledGame = styled(motion.div)`
         height: 100%;
         object-fit: cover;
     }
-    h3{
+    h3 {
         padding: 1.5rem 1.5rem 0.5rem 1.5rem;
     }
 `;

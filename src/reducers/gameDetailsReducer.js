@@ -1,6 +1,7 @@
 const initialState = {
     game: {},
-    screenshots: {}
+    screenshots: {},
+    isLoading: true,
 };
 
 const gameDetailsReducer = (state = initialState, action) => {
@@ -10,6 +11,13 @@ const gameDetailsReducer = (state = initialState, action) => {
                 ...state,
                 game: action.payload.game,
                 screenshots: action.payload.screenshots,
+                isLoading: false,
+            };
+
+        case 'LOADING_DETAIL':
+            return {
+                ...state,
+                isLoading: true,
             };
         default:
             return {
