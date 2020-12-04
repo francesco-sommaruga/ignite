@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import gamesReducer from './gamesReducer';
-// import { navReducer } from './navReducer';
+import gameDetailsReducer from './gameDetailsReducer';
 
 const rootReducer = combineReducers({
     games: gamesReducer,
-    // nav: navReducer,
+    game: gameDetailsReducer,
 });
 
 export default rootReducer;

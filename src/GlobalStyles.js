@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
             background-color: orange;
             border-radius:5px;
         }
+        &::-webkit-scrollbar-track{
+            background-color: #dadada;
+        }
     }
     body {
         font-family: 'Montserrat', sans-serif;
