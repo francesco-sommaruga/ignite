@@ -1,10 +1,13 @@
 //pages
 import Home from './pages/Home';
 
+//styles
+import GlobalStyles from './GlobalStyles';
+
 const App = () => {
     return (
         <div className="App">
-            <h1>Hello Ignite</h1>
+            <GlobalStyles />
             <Home />
         </div>
     );
