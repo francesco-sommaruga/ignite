@@ -10,6 +10,10 @@ import { useSelector } from 'react-redux';
 //history
 import { useHistory } from 'react-router-dom';
 
+
+//image resizer
+import { smallImage } from '../util';
+
 const GameDetail = () => {
     //get data
     const { game, screenshots, isLoading } = useSelector(state => state.gameDetails);
@@ -48,14 +52,14 @@ const GameDetail = () => {
                             </Info>
                         </Stats>
                         <Media>
-                            <img src={game.background_image} alt={game.name} />
+                            <img src={smallImage(game.background_image, 1280)} alt={game.name} />
                         </Media>
                         <Description>
                             <p>{game.description_raw}</p>
                         </Description>
                         <div className="gallery">
                             {screenshots.results.map(screenshot => (
-                                <img src={screenshot.image} key={screenshot.id} alt="game screenshot" />
+                                <img src={smallImage(screenshot.image, 1280)} key={screenshot.id} alt="game screenshot" />
                             ))}
                         </div>
                     </>

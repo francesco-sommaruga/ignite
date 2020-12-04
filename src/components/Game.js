@@ -9,6 +9,9 @@ import { motion } from 'framer-motion';
 //link for react router
 import { Link } from 'react-router-dom';
 
+//image resizer
+import { smallImage } from '../util';
+
 const Game = ({ game }) => {
     //load details
     const dispatch = useDispatch();
@@ -21,7 +24,7 @@ const Game = ({ game }) => {
             <Link to={`/game/${game.id}`}>
                 <h3>{game.name}</h3>
                 <p>{game.released}</p>
-                <img src={game.background_image} alt={game.name} />
+                <img src={smallImage(game.background_image, 640)} alt={game.name} />
             </Link>
         </StyledGame>
     );
