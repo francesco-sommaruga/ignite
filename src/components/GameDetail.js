@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 //styles and animations
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -5,12 +7,27 @@ import { motion } from 'framer-motion';
 //redux data fetching
 import { useSelector } from 'react-redux';
 
+//history
+import { useHistory } from 'react-router-dom';
+
 const GameDetail = () => {
     //get data
     const { game, screenshots, isLoading } = useSelector(state => state.gameDetails);
 
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        console.log('salve');
+        return () => (document.body.style.overflow = 'auto');
+    }, []);
+
+    //remove component when clicking on the CardShadow
+    const history = useHistory();
+    const handleShadowClick = ({ target }) => {
+        target.classList.contains('shadow') && history.push('/');
+    };
+
     return (
-        <CardShadow>
+        <CardShadow className="shadow" onClick={handleShadowClick}>
             <Details>
                 {isLoading ? (
                     <h3>Loading...</h3>

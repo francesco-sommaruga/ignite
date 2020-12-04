@@ -15,6 +15,7 @@ const Game = ({ game }) => {
     const loadDetailHandler = () => {
         dispatch(loadDetail(game.id));
     };
+
     return (
         <StyledGame onClick={loadDetailHandler}>
             <Link to={`/game/${game.id}`}>
@@ -40,7 +41,8 @@ const StyledGame = styled(motion.div)`
     }
     img {
         width: 100%;
-        height: 100%;
+        min-height: 80%;
+        display: block;
         object-fit: cover;
     }
     h3 {
