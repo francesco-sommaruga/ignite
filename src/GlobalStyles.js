@@ -5,14 +5,15 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-    }
-    html {
         &::-webkit-scrollbar {
             width: 0.5rem;
         }
         &::-webkit-scrollbar-thumb {
-            background-color: orange;
+            background-color: #ff7b00;
             border-radius:5px;
+            &:hover {
+                background-color:#c96100;
+            }
         }
         &::-webkit-scrollbar-track{
             background-color: #dadada;
@@ -30,7 +31,6 @@ const GlobalStyles = createGlobalStyle`
     h3{
         font-weight: 700;
         color: #333;
-        padding: 1.5rem 1.5rem 0.5rem 1.5rem;
     }
     p{
         padding-bottom: .5rem;

@@ -38,6 +38,9 @@ const StyledGame = styled(motion.div)`
         height: 100%;
         object-fit: cover;
     }
+    h3{
+        padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+    }
 `;
 
 export default Game;

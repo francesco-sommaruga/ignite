@@ -4,7 +4,7 @@ import gameDetailsReducer from './gameDetailsReducer';
 
 const rootReducer = combineReducers({
     games: gamesReducer,
-    game: gameDetailsReducer,
+    gameDetails: gameDetailsReducer,
 });
 
 export default rootReducer;
