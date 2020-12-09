@@ -2,16 +2,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadGames } from '../actions/gamesActions';
 
-//styles and animations
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
 //routing
 import { useLocation } from 'react-router-dom';
 
 //components
 import GameList from '../components/GameList';
 import GameDetail from '../components/GameDetail';
+
+//framer-motion
+import { AnimatePresence } from 'framer-motion';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -28,7 +27,7 @@ const Home = () => {
 
     return (
         <div>
-            {pathId && <GameDetail />}
+            <AnimatePresence exitBeforeEnter>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
             <GameList games={upcoming} title="Upcoming Games" />
             <GameList games={popular} title="Popular Games" />
             <GameList games={newGames} title="New Games" />

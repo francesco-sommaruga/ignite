@@ -41,6 +41,10 @@ const GlobalStyles = createGlobalStyle`
         text-decoration:none;
         color: #696969;
     }
+    input{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+    }
 `;
 
 export default GlobalStyles;
